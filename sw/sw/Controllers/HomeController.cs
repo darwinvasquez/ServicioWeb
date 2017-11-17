@@ -10,7 +10,7 @@ namespace sw.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Catálogo de Servicio";
 
             return View();
         }
