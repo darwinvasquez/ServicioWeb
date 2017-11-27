@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoriaTest">
+          <Key>
+            <PropertyRef Name="CategoriaTestId" />
+          </Key>
+          <Property Name="CategoriaTestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreguntaTest">
+          <Key>
+            <PropertyRef Name="PreguntaTestId" />
+          </Key>
+          <Property Name="PreguntaTestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoriaTestId" Type="int" Nullable="false" />
+          <Property Name="Pregunta" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RespuestaTest">
+          <Key>
+            <PropertyRef Name="RespuestaTestId" />
+          </Key>
+          <Property Name="RespuestaTestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PreguntaTestId" Type="int" Nullable="false" />
+          <Property Name="Respuesta" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Correcta" Type="bit" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId">
+          <End Role="CategoriaTest" Type="Self.CategoriaTest" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PreguntaTest" Type="Self.PreguntaTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaTest">
+              <PropertyRef Name="CategoriaTestId" />
+            </Principal>
+            <Dependent Role="PreguntaTest">
+              <PropertyRef Name="CategoriaTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId">
+          <End Role="PreguntaTest" Type="Self.PreguntaTest" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RespuestaTest" Type="Self.RespuestaTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreguntaTest">
+              <PropertyRef Name="PreguntaTestId" />
+            </Principal>
+            <Dependent Role="RespuestaTest">
+              <PropertyRef Name="PreguntaTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CategoriaTest" EntityType="Self.CategoriaTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreguntaTest" EntityType="Self.PreguntaTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RespuestaTest" EntityType="Self.RespuestaTest" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId" Association="Self.FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId">
+            <End Role="CategoriaTest" EntitySet="CategoriaTest" />
+            <End Role="PreguntaTest" EntitySet="PreguntaTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId" Association="Self.FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId">
+            <End Role="PreguntaTest" EntitySet="PreguntaTest" />
+            <End Role="RespuestaTest" EntitySet="RespuestaTest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoriaTest">
+          <Key>
+            <PropertyRef Name="CategoriaTestId" />
+          </Key>
+          <Property Name="CategoriaTestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PreguntaTest" Relationship="Self.FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId" FromRole="CategoriaTest" ToRole="PreguntaTest" />
+        </EntityType>
+        <EntityType Name="PreguntaTest">
+          <Key>
+            <PropertyRef Name="PreguntaTestId" />
+          </Key>
+          <Property Name="PreguntaTestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoriaTestId" Type="Int32" Nullable="false" />
+          <Property Name="Pregunta" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CategoriaTest" Relationship="Self.FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId" FromRole="PreguntaTest" ToRole="CategoriaTest" />
+          <NavigationProperty Name="RespuestaTest" Relationship="Self.FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId" FromRole="PreguntaTest" ToRole="RespuestaTest" />
+        </EntityType>
+        <EntityType Name="RespuestaTest">
+          <Key>
+            <PropertyRef Name="RespuestaTestId" />
+          </Key>
+          <Property Name="RespuestaTestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PreguntaTestId" Type="Int32" Nullable="false" />
+          <Property Name="Respuesta" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correcta" Type="Boolean" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PreguntaTest" Relationship="Self.FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId" FromRole="RespuestaTest" ToRole="PreguntaTest" />
+        </EntityType>
+        <Association Name="FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId">
+          <End Role="CategoriaTest" Type="Self.CategoriaTest" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PreguntaTest" Type="Self.PreguntaTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaTest">
+              <PropertyRef Name="CategoriaTestId" />
+            </Principal>
+            <Dependent Role="PreguntaTest">
+              <PropertyRef Name="CategoriaTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId">
+          <End Role="PreguntaTest" Type="Self.PreguntaTest" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RespuestaTest" Type="Self.RespuestaTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreguntaTest">
+              <PropertyRef Name="PreguntaTestId" />
+            </Principal>
+            <Dependent Role="RespuestaTest">
+              <PropertyRef Name="PreguntaTestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContextConocimiento" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoriaTest" EntityType="Self.CategoriaTest" />
+          <EntitySet Name="PreguntaTest" EntityType="Self.PreguntaTest" />
+          <EntitySet Name="RespuestaTest" EntityType="Self.RespuestaTest" />
+          <AssociationSet Name="FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId" Association="Self.FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId">
+            <End Role="CategoriaTest" EntitySet="CategoriaTest" />
+            <End Role="PreguntaTest" EntitySet="PreguntaTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId" Association="Self.FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId">
+            <End Role="PreguntaTest" EntitySet="PreguntaTest" />
+            <End Role="RespuestaTest" EntitySet="RespuestaTest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ContextConocimiento">
+          <EntitySetMapping Name="CategoriaTest">
+            <EntityTypeMapping TypeName="Model.CategoriaTest">
+              <MappingFragment StoreEntitySet="CategoriaTest">
+                <ScalarProperty Name="CategoriaTestId" ColumnName="CategoriaTestId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreguntaTest">
+            <EntityTypeMapping TypeName="Model.PreguntaTest">
+              <MappingFragment StoreEntitySet="PreguntaTest">
+                <ScalarProperty Name="PreguntaTestId" ColumnName="PreguntaTestId" />
+                <ScalarProperty Name="CategoriaTestId" ColumnName="CategoriaTestId" />
+                <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespuestaTest">
+            <EntityTypeMapping TypeName="Model.RespuestaTest">
+              <MappingFragment StoreEntitySet="RespuestaTest">
+                <ScalarProperty Name="RespuestaTestId" ColumnName="RespuestaTestId" />
+                <ScalarProperty Name="PreguntaTestId" ColumnName="PreguntaTestId" />
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+                <ScalarProperty Name="Correcta" ColumnName="Correcta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
