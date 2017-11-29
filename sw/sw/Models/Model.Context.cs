@@ -18,6 +18,8 @@ namespace sw.Models
         public ContextConocimiento()
             : base("name=ContextConocimiento")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

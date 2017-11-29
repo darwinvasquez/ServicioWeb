@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="pruebasd_conocimientoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CategoriaTest">
           <Key>
             <PropertyRef Name="CategoriaTestId" />
@@ -60,7 +60,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
+        <EntityContainer Name="pruebasd_conocimientoModelStoreContainer">
           <EntitySet Name="CategoriaTest" EntityType="Self.CategoriaTest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PreguntaTest" EntityType="Self.PreguntaTest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RespuestaTest" EntityType="Self.RespuestaTest" Schema="dbo" store:Type="Tables" />
@@ -77,7 +77,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="pruebasd_conocimientoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CategoriaTest">
           <Key>
             <PropertyRef Name="CategoriaTestId" />
@@ -155,9 +155,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ContextConocimiento">
+        <EntityContainerMapping StorageEntityContainer="pruebasd_conocimientoModelStoreContainer" CdmEntityContainer="ContextConocimiento">
           <EntitySetMapping Name="CategoriaTest">
-            <EntityTypeMapping TypeName="Model.CategoriaTest">
+            <EntityTypeMapping TypeName="pruebasd_conocimientoModel.CategoriaTest">
               <MappingFragment StoreEntitySet="CategoriaTest">
                 <ScalarProperty Name="CategoriaTestId" ColumnName="CategoriaTestId" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -166,7 +166,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PreguntaTest">
-            <EntityTypeMapping TypeName="Model.PreguntaTest">
+            <EntityTypeMapping TypeName="pruebasd_conocimientoModel.PreguntaTest">
               <MappingFragment StoreEntitySet="PreguntaTest">
                 <ScalarProperty Name="PreguntaTestId" ColumnName="PreguntaTestId" />
                 <ScalarProperty Name="CategoriaTestId" ColumnName="CategoriaTestId" />
@@ -176,7 +176,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RespuestaTest">
-            <EntityTypeMapping TypeName="Model.RespuestaTest">
+            <EntityTypeMapping TypeName="pruebasd_conocimientoModel.RespuestaTest">
               <MappingFragment StoreEntitySet="RespuestaTest">
                 <ScalarProperty Name="RespuestaTestId" ColumnName="RespuestaTestId" />
                 <ScalarProperty Name="PreguntaTestId" ColumnName="PreguntaTestId" />

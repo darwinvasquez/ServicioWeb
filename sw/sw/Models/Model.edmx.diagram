@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f4a507f3f2b742c6b6c9cce975c1c4bd" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.CategoriaTest" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PreguntaTest" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.RespuestaTest" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId" ManuallyRouted="false" />
+      <Diagram DiagramId="443c6ddec48446579fce66dbd37b5f31" Name="Diagram1">
+        <EntityTypeShape EntityType="pruebasd_conocimientoModel.CategoriaTest" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pruebasd_conocimientoModel.PreguntaTest" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pruebasd_conocimientoModel.RespuestaTest" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="pruebasd_conocimientoModel.FK_dbo_PreguntaTest_dbo_CategoriaTest_CategoriaTestId" ManuallyRouted="false" />
+        <AssociationConnector Association="pruebasd_conocimientoModel.FK_dbo_RespuestaTest_dbo_PreguntaTest_PreguntaTestId" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
